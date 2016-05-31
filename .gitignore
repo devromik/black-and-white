@@ -40,10 +40,10 @@ target/
 #########
 # Other #
 #########
+.idea/
 logs
 *.log
 *.exclude
 *.old
 *.tmp
-/.idea
 ~*
