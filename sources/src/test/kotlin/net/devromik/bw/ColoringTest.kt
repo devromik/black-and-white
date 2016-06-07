@@ -83,9 +83,9 @@ class ColoringTest {
 
         val coloring = Coloring(tree)
 
-        assertEquals(0, coloring.blackCount())
-        assertEquals(0, coloring.whiteCount())
-        assertEquals(0, coloring.grayCount())
+        assertEquals(0, coloring.black())
+        assertEquals(0, coloring.white())
+        assertEquals(0, coloring.gray())
 
         // ****************************** //
 
@@ -95,8 +95,8 @@ class ColoringTest {
         coloring.color(child_4, GRAY)
         coloring.color(child_5, GRAY)
 
-        assertEquals(2, coloring.blackCount())
-        assertEquals(1, coloring.whiteCount())
-        assertEquals(2, coloring.grayCount())
+        assertEquals(2, coloring.black())
+        assertEquals(1, coloring.white())
+        assertEquals(2, coloring.gray())
     }
 }
