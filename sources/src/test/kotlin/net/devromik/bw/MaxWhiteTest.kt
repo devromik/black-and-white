@@ -20,7 +20,7 @@ class MaxWhiteTest {
         assertEquals(INVALID_MAX_WHITE, maxWhite.forBlack(Int.MIN_VALUE))
 
         (0..TREE_SIZE).forEach {
-            maxWhite.put(black = it, maxWhite = it)
+            maxWhite[it] = it
             assertEquals(it, maxWhite.forBlack(it))
         }
 
@@ -35,9 +35,9 @@ class MaxWhiteTest {
     }
 
     @Test(expected = IllegalArgumentException::class)
-    fun maxNumberOfWhiteNodes_ShouldBe_NonNegative() {
+    fun maxNumberOfWhiteNodes_ShouldBe_NonNegative_Or_INVALID_MAX_WHITE() {
         val maxWhite = MaxWhite(treeSize = TREE_SIZE)
-        maxWhite.put(0, -1)
+        maxWhite[0] = NOT_INIT_MAX_WHITE
     }
 
     @Test fun INVALID_MAX_WHITE_ShouldBe_Negative() {
