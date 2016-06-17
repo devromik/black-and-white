@@ -10,13 +10,13 @@ import org.junit.Assert.*
  */
 class ColorTest {
 
-    @Test fun count() {
+    @Test fun thereAreExactlyThreeColors() {
         assertEquals(3, COLOR_COUNT)
     }
 
-    @Test fun indexes() {
+    @Test fun colorsAreIndexed() {
         val indexes = values().map { it.index }.sorted().toIntArray()
-        assertArrayEquals(indexes, (0..COLOR_COUNT - 1).toList().toIntArray())
+        assertArrayEquals((0..COLOR_COUNT - 1).toList().toIntArray(), indexes)
 
         assertNull(colorByIndex(-1))
         assertEquals(BLACK, colorByIndex(0))
