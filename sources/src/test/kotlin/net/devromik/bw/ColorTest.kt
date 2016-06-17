@@ -10,11 +10,11 @@ import org.junit.Assert.*
  */
 class ColorTest {
 
-    @Test fun count_Test() {
+    @Test fun count() {
         assertEquals(3, COLOR_COUNT)
     }
 
-    @Test fun indexes_Test() {
+    @Test fun indexes() {
         val indexes = values().map { it.index }.sorted().toIntArray()
         assertArrayEquals(indexes, (0..COLOR_COUNT - 1).toList().toIntArray())
 
