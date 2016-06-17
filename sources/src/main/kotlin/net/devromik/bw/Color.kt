@@ -12,3 +12,5 @@ enum class Color(val index: Int) {
 }
 
 val COLOR_COUNT = values().size
+
+fun colorByIndex(index: Int) = Color.values().firstOrNull { it.index == index }
