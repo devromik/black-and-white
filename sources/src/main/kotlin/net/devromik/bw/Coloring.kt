@@ -23,7 +23,7 @@ class Coloring<D>(tree: Tree<D>) {
     fun isColored(node: TreeNode<D>) = coloring.has(node)
     fun colorOf(node: TreeNode<D>) = coloring[node]
 
-    fun black() = count[BLACK.index]
-    fun white() = count[WHITE.index]
-    fun gray() = count[GRAY.index]
+    fun blackCount() = count[BLACK.index]
+    fun whiteCount() = count[WHITE.index]
+    fun grayCount() = count[GRAY.index]
 }
