@@ -16,14 +16,17 @@ class MaxWhiteMapTest {
         val maxWhiteMap = MaxWhiteMap(TREE_SIZE)
         assertEquals(TREE_SIZE, maxWhiteMap.treeSize)
 
-        assertEquals(INVALID_MAX_WHITE, maxWhiteMap[-1])
+        // Invalid
         assertEquals(INVALID_MAX_WHITE, maxWhiteMap[Int.MIN_VALUE])
+        assertEquals(INVALID_MAX_WHITE, maxWhiteMap[-1])
 
+        // Ok
         (0..TREE_SIZE).forEach {
             maxWhiteMap[it] = it
             assertEquals(it, maxWhiteMap[it])
         }
 
+        // Invalid
         assertEquals(INVALID_MAX_WHITE, maxWhiteMap[TREE_SIZE + 1])
         assertEquals(INVALID_MAX_WHITE, maxWhiteMap[Int.MAX_VALUE])
     }
