@@ -1,6 +1,6 @@
 package net.devromik.bw
 
-import net.devromik.bw.Color.values
+import net.devromik.bw.Color.*
 
 /**
  * @author Shulnyaev Roman
@@ -13,4 +13,10 @@ enum class Color(val index: Int) {
 
 val COLOR_COUNT = values().size
 
-fun colorByIndex(index: Int) = Color.values().firstOrNull { it.index == index }
+fun colorByIndex(index: Int) =
+    when (index) {
+        BLACK.index -> BLACK
+        WHITE.index -> WHITE
+        GRAY.index -> GRAY
+        else -> throw IllegalArgumentException("$index is not a color index")
+    }
