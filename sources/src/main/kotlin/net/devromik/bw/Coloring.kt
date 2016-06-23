@@ -16,6 +16,12 @@ class Coloring<D>(tree: Tree<D>) {
     // ****************************** //
 
     fun color(node: TreeNode<D>, color: Color) {
+        val prevColor = coloring[node]
+
+        if (prevColor != null) {
+            --count[prevColor.index]
+        }
+
         coloring[node] = color
         ++count[color.index]
     }

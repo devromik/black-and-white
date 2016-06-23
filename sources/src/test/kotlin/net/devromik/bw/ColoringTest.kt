@@ -90,13 +90,21 @@ class ColoringTest {
         // ****************************** //
 
         coloring.color(child_1, BLACK)
+        coloring.color(child_1, WHITE)
+        coloring.color(child_1, WHITE)
+
         coloring.color(child_2, BLACK)
         coloring.color(child_3, WHITE)
+
         coloring.color(child_4, GRAY)
+        coloring.color(child_4, WHITE)
+
+        coloring.color(child_5, GRAY)
+        coloring.color(child_5, GRAY)
         coloring.color(child_5, GRAY)
 
-        assertEquals(2, coloring.blackCount())
-        assertEquals(1, coloring.whiteCount())
-        assertEquals(2, coloring.grayCount())
+        assertEquals(1, coloring.blackCount())
+        assertEquals(3, coloring.whiteCount())
+        assertEquals(1, coloring.grayCount())
     }
 }
