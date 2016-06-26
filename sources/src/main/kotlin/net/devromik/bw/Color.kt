@@ -3,6 +3,8 @@ package net.devromik.bw
 import net.devromik.bw.Color.*
 
 /**
+ * The indexes must not be changed.
+ *
  * @author Shulnyaev Roman
  */
 enum class Color(val index: Int) {

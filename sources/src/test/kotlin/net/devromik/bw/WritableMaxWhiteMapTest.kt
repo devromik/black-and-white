@@ -6,14 +6,14 @@ import org.junit.Test
 /**
  * @author Shulnyaev Roman
  */
-class MaxWhiteMapTest {
+class WritableMaxWhiteMapTest {
 
     val TREE_SIZE = 10
 
     // ****************************** //
 
     @Test fun numberOfBlackNodes_ShouldBe_From_0_To_SizeOfTree() {
-        val maxWhiteMap = MaxWhiteMap(TREE_SIZE)
+        val maxWhiteMap = WritableMaxWhiteMap(TREE_SIZE)
         assertEquals(TREE_SIZE, maxWhiteMap.treeSize)
 
         // Invalid
@@ -33,13 +33,13 @@ class MaxWhiteMapTest {
 
     @Test(expected = IllegalStateException::class)
     fun shouldBeInitialized() {
-        val maxWhiteMap = MaxWhiteMap(TREE_SIZE)
+        val maxWhiteMap = WritableMaxWhiteMap(TREE_SIZE)
         maxWhiteMap[0]
     }
 
     @Test(expected = IllegalArgumentException::class)
     fun maxNumberOfWhiteNodes_ShouldBe_NonNegative_Or_INVALID_MAX_WHITE() {
-        val maxWhiteMap = MaxWhiteMap(TREE_SIZE)
+        val maxWhiteMap = WritableMaxWhiteMap(TREE_SIZE)
         maxWhiteMap[0] = NOT_INIT_MAX_WHITE
     }
 
