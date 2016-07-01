@@ -13,7 +13,7 @@ class SingleChildFusionTest {
     
     @Test fun doesNotHaveChildFusions() {
         val rootMaxWhiteMap = FixedRootColorMaxWhiteMap.forSingleNode()
-        val fusion = SingleChildFusion<String>(rootMaxWhiteMap)
+        val fusion = SingleChildFusion(rootMaxWhiteMap)
 
         assertNull(fusion.leftFusion)
         assertNull(fusion.rightFusion)
@@ -40,7 +40,7 @@ class SingleChildFusionTest {
         rootMaxWhiteMap[GRAY, 3] = 0
         rootMaxWhiteMap[GRAY, 4] = INVALID_MAX_WHITE
 
-        val fusion = SingleChildFusion<String>(rootMaxWhiteMap)
+        val fusion = SingleChildFusion(rootMaxWhiteMap)
 
         assertEquals(fusion.minGrayFor(BLACK, 0), INVALID_MIN_GRAY)
         assertEquals(fusion.minGrayFor(BLACK, 1), 1)

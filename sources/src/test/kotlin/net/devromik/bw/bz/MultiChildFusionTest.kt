@@ -28,8 +28,8 @@ class MultiChildFusionTest {
         rootMaxWhiteMap[Color.GRAY, 2] = INVALID_MAX_WHITE
 
         val minGrayToBlacksMap = MinGrayToBlacksMap(rootMaxWhiteMap)
-        val leftFusion = SingleChildFusion<String>(rootMaxWhiteMap)
-        val rightFusion = SingleChildFusion<String>(rootMaxWhiteMap)
+        val leftFusion = SingleChildFusion(rootMaxWhiteMap)
+        val rightFusion = SingleChildFusion(rootMaxWhiteMap)
         val fusion = MultiChildFusion(minGrayToBlacksMap.unitedWith(minGrayToBlacksMap), leftFusion, rightFusion)
 
         assertEquals(INVALID_MIN_GRAY, fusion.minGrayFor(rootColor = BLACK, black = 0))

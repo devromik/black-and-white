@@ -5,10 +5,10 @@ import net.devromik.bw.Color
 /**
  * @author Shulnyaev Roman
  */
-class MultiChildFusion<D>(
+class MultiChildFusion(
     minGrayToBlacksMap: MinGrayToBlacksMap,
-    leftFusion: Fusion<D>,
-    rightFusion: Fusion<D>) : Fusion<D>(leftFusion, rightFusion) {
+    leftFusion: Fusion,
+    rightFusion: Fusion) : Fusion(leftFusion, rightFusion) {
 
     val subtreeSize = minGrayToBlacksMap.subtreeSize
     val blackToMinGray: Array<IntArray>

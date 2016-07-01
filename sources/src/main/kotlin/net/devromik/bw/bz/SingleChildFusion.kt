@@ -7,7 +7,7 @@ import net.devromik.bw.INVALID_MAX_WHITE
 /**
  * @author Shulnyaev Roman
  */
-class SingleChildFusion<D>(val rootMaxWhiteMap: FixedRootColorMaxWhiteMap) : Fusion<D>(leftFusion = null, rightFusion = null) {
+class SingleChildFusion(val rootMaxWhiteMap: FixedRootColorMaxWhiteMap) : Fusion(leftFusion = null, rightFusion = null) {
 
     val subtreeSize = rootMaxWhiteMap.treeSize
 

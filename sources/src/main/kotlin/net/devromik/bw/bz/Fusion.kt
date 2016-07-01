@@ -5,6 +5,6 @@ import net.devromik.bw.Color
 /**
  * @author Shulnyaev Roman
  */
-abstract class Fusion<D>(val leftFusion: Fusion<D>?, val rightFusion: Fusion<D>?) {
+abstract class Fusion(val leftFusion: Fusion?, val rightFusion: Fusion?) {
     abstract fun minGrayFor(rootColor: Color, black: Int): Int
 }
