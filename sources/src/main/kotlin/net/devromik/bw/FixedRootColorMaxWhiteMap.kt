@@ -16,25 +16,26 @@ open class FixedRootColorMaxWhiteMap(override val treeSize: Int) : MaxWhiteMap {
 
     companion object {
 
-        fun forSingleNode(): FixedRootColorMaxWhiteMap {
-            val singleNodeMaxWhiteMap = FixedRootColorMaxWhiteMap(treeSize = 1)
+        val SINGLE_NODE_FIXED_ROOT_COLOR_MAX_WHITE_MAP = object : FixedRootColorMaxWhiteMap(treeSize = 1) {
 
-            singleNodeMaxWhiteMap.set(rootColor = BLACK, black = 0, maxWhite = INVALID_MAX_WHITE)
-            singleNodeMaxWhiteMap.set(rootColor = BLACK, black = 1, maxWhite = 0)
+            override fun get(rootColor: Color, black: Int) =
+                when (rootColor) {
+                    BLACK -> if (black == 1) 0 else INVALID_MAX_WHITE
+                    WHITE -> if (black == 0) 1 else INVALID_MAX_WHITE
+                    GRAY -> if (black == 0) 0 else INVALID_MAX_WHITE
+                }
 
-            singleNodeMaxWhiteMap.set(rootColor = WHITE, black = 0, maxWhite = 1)
-            singleNodeMaxWhiteMap.set(rootColor = WHITE, black = 1, maxWhite = INVALID_MAX_WHITE)
-
-            singleNodeMaxWhiteMap.set(rootColor = GRAY, black = 0, maxWhite = 0)
-            singleNodeMaxWhiteMap.set(rootColor = GRAY, black = 1, maxWhite = INVALID_MAX_WHITE)
-
-            return singleNodeMaxWhiteMap
+            override fun set(rootColor: Color, black: Int, maxWhite: Int) {
+                throw UnsupportedOperationException()
+            }
         }
+
+        fun forSingleNode() = SINGLE_NODE_FIXED_ROOT_COLOR_MAX_WHITE_MAP
     }
 
     // ****************************** //
 
-    operator fun set(rootColor: Color, black: Int, maxWhite: Int) {
+    open operator fun set(rootColor: Color, black: Int, maxWhite: Int) {
         mapFor(rootColor)[black] = maxWhite
     }
 
