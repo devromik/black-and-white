@@ -5,4 +5,4 @@ import net.devromik.bw.ColorerTest
 /**
  * @author Shulnyaev Roman
  */
-class BerendZackerColorerTest : ColorerTest(BerendZackerColorer())
+class BerendZuckerColorerTest : ColorerTest(BerendZuckerColorer())

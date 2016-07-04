@@ -8,7 +8,7 @@ import java.util.concurrent.ForkJoinPool.commonPool
 /**
  * @author Shulnyaev Roman
  */
-class BerendZackerColorer(private val forkJoinPool: ForkJoinPool = commonPool()) : Colorer {
+class BerendZuckerColorer(private val forkJoinPool: ForkJoinPool = commonPool()) : Colorer {
 
     /**
      * The tree should be indexed.
