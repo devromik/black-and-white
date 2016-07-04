@@ -6,7 +6,7 @@ Library of algorithms for the Black-and-White tree coloring.
 
 Let ```T``` be a tree.
 
-(```b```, ```w```)-coloring of ```T``` is a partial coloring of ```T``` such that:
+```(b, w)```-coloring of ```T``` is a partial coloring of ```T``` such that:
 * ```b``` nodes colored black
 * ```w``` nodes colored white
 * all other nodes left uncolored
