@@ -9,7 +9,7 @@ Let ```T``` be a tree.
 (```b```, ```w```)-coloring of ```T``` is a partial coloring of ```T``` such that:
 * ```b``` nodes colored black
 * ```w``` nodes colored white
-* all other nodes left uncolored (gray)
+* all other nodes left uncolored
 * no black node and white node are adjacent
 
 The library provides a set of algoritms each of which:
@@ -50,21 +50,21 @@ Supported algorithms:
 
 ```kotlin
 val tree = Tree<String>(
-  root() {
-    child()
-    child {
-      child {
-          child {
-              child()
-          }
-      }
-      child {
-          child {
-              child()
-          }
-      }
+    root() {
+        child()
+        child {
+            child {
+                child {
+                    child()
+                }
+            }
+            child {
+                child {
+                    child()
+                }
+            }
+        }
     }
-  }
 )
 
 // A tree should be indexed.
