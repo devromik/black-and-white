@@ -1,6 +1,6 @@
 # black-and-white
 
-Library of algorithms for the Black-and-White coloring of tree.
+Library of algorithms for the Black-and-White tree coloring.
 
 ## Introduction
 
