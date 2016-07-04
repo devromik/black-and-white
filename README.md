@@ -114,6 +114,11 @@ for (black in 0..treeSize) {
 }
 ```
 
+## Dependencies
+
+* https://github.com/devromik/tree (Maven)
+* https://github.com/devromik/poly (Maven)
+
 ## License
 
 MIT
