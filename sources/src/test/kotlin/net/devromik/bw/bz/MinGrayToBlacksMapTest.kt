@@ -13,28 +13,28 @@ import org.junit.Test
  */
 class MinGrayToBlacksMapTest {
 
-    @Test fun canBeMadeOf_FixedRootColorMaxWhiteMap() {
+    @Test fun canBeMadeOfSubtreeMaxWhiteMap() {
         // root -> child -> (child, child)
-        val rootMaxWhiteMap = FixedRootColorMaxWhiteMap(4)
-        rootMaxWhiteMap[BLACK, 0] = INVALID_MAX_WHITE
-        rootMaxWhiteMap[BLACK, 1] = 2
-        rootMaxWhiteMap[BLACK, 2] = 0
-        rootMaxWhiteMap[BLACK, 3] = 0
-        rootMaxWhiteMap[BLACK, 4] = 0
+        val subtreeRootMaxWhiteMap = FixedRootColorMaxWhiteMap(4)
+        subtreeRootMaxWhiteMap[BLACK, 0] = INVALID_MAX_WHITE
+        subtreeRootMaxWhiteMap[BLACK, 1] = 2
+        subtreeRootMaxWhiteMap[BLACK, 2] = 0
+        subtreeRootMaxWhiteMap[BLACK, 3] = 0
+        subtreeRootMaxWhiteMap[BLACK, 4] = 0
 
-        rootMaxWhiteMap[WHITE, 0] = 4
-        rootMaxWhiteMap[WHITE, 1] = 1
-        rootMaxWhiteMap[WHITE, 2] = 1
-        rootMaxWhiteMap[WHITE, 3] = INVALID_MAX_WHITE
-        rootMaxWhiteMap[WHITE, 4] = INVALID_MAX_WHITE
+        subtreeRootMaxWhiteMap[WHITE, 0] = 4
+        subtreeRootMaxWhiteMap[WHITE, 1] = 1
+        subtreeRootMaxWhiteMap[WHITE, 2] = 1
+        subtreeRootMaxWhiteMap[WHITE, 3] = INVALID_MAX_WHITE
+        subtreeRootMaxWhiteMap[WHITE, 4] = INVALID_MAX_WHITE
 
-        rootMaxWhiteMap[GRAY, 0] = 3
-        rootMaxWhiteMap[GRAY, 1] = 0
-        rootMaxWhiteMap[GRAY, 2] = 0
-        rootMaxWhiteMap[GRAY, 3] = 0
-        rootMaxWhiteMap[GRAY, 4] = INVALID_MAX_WHITE
+        subtreeRootMaxWhiteMap[GRAY, 0] = 3
+        subtreeRootMaxWhiteMap[GRAY, 1] = 0
+        subtreeRootMaxWhiteMap[GRAY, 2] = 0
+        subtreeRootMaxWhiteMap[GRAY, 3] = 0
+        subtreeRootMaxWhiteMap[GRAY, 4] = INVALID_MAX_WHITE
 
-        val minGrayToBlacksMap = MinGrayToBlacksMap(rootMaxWhiteMap)
+        val minGrayToBlacksMap = MinGrayToBlacksMap(subtreeRootMaxWhiteMap)
         assertEquals(4, minGrayToBlacksMap.subtreeSize)
 
         assertEquals(blackListOf(4), minGrayToBlacksMap[BLACK, 0])
@@ -63,51 +63,51 @@ class MinGrayToBlacksMapTest {
         return blackList
     }
     
-    @Test fun canBeConvertedInto_FixedRootColorMaxWhiteMap() {
+    @Test fun canBeConvertedIntoSubtreeMaxWhiteMap() {
         // root -> child -> (child, child)
-        val rootMaxWhiteMap = FixedRootColorMaxWhiteMap(4)
-        rootMaxWhiteMap[BLACK, 0] = INVALID_MAX_WHITE
-        rootMaxWhiteMap[BLACK, 1] = 2
-        rootMaxWhiteMap[BLACK, 2] = 0
-        rootMaxWhiteMap[BLACK, 3] = 0
-        rootMaxWhiteMap[BLACK, 4] = 0
+        val subtreeRootMaxWhiteMap = FixedRootColorMaxWhiteMap(4)
+        subtreeRootMaxWhiteMap[BLACK, 0] = INVALID_MAX_WHITE
+        subtreeRootMaxWhiteMap[BLACK, 1] = 2
+        subtreeRootMaxWhiteMap[BLACK, 2] = 0
+        subtreeRootMaxWhiteMap[BLACK, 3] = 0
+        subtreeRootMaxWhiteMap[BLACK, 4] = 0
 
-        rootMaxWhiteMap[WHITE, 0] = 4
-        rootMaxWhiteMap[WHITE, 1] = 1
-        rootMaxWhiteMap[WHITE, 2] = 1
-        rootMaxWhiteMap[WHITE, 3] = INVALID_MAX_WHITE
-        rootMaxWhiteMap[WHITE, 4] = INVALID_MAX_WHITE
+        subtreeRootMaxWhiteMap[WHITE, 0] = 4
+        subtreeRootMaxWhiteMap[WHITE, 1] = 1
+        subtreeRootMaxWhiteMap[WHITE, 2] = 1
+        subtreeRootMaxWhiteMap[WHITE, 3] = INVALID_MAX_WHITE
+        subtreeRootMaxWhiteMap[WHITE, 4] = INVALID_MAX_WHITE
 
-        rootMaxWhiteMap[GRAY, 0] = 3
-        rootMaxWhiteMap[GRAY, 1] = 0
-        rootMaxWhiteMap[GRAY, 2] = 0
-        rootMaxWhiteMap[GRAY, 3] = 0
-        rootMaxWhiteMap[GRAY, 4] = INVALID_MAX_WHITE
+        subtreeRootMaxWhiteMap[GRAY, 0] = 3
+        subtreeRootMaxWhiteMap[GRAY, 1] = 0
+        subtreeRootMaxWhiteMap[GRAY, 2] = 0
+        subtreeRootMaxWhiteMap[GRAY, 3] = 0
+        subtreeRootMaxWhiteMap[GRAY, 4] = INVALID_MAX_WHITE
 
-        val minGrayToBlacksMap = MinGrayToBlacksMap(rootMaxWhiteMap)
+        val minGrayToBlacksMap = MinGrayToBlacksMap(subtreeRootMaxWhiteMap)
 
         assert_FixedRootColorMaxWhiteMap_Equals(
-            rootMaxWhiteMap,
+            subtreeRootMaxWhiteMap,
             minGrayToBlacksMap.toFixedRootColorMaxWhiteMap())
     }
     
-    @Test fun mapsForTheSameRoot_CanBeUnited() {
+    @Test fun mapsForTheSameRootCanBeUnited() {
         // root -> child
-        val rootMaxWhiteMap = FixedRootColorMaxWhiteMap(2)
-        rootMaxWhiteMap[BLACK, 0] = INVALID_MAX_WHITE
-        rootMaxWhiteMap[BLACK, 1] = 0
-        rootMaxWhiteMap[BLACK, 2] = 0
+        val subtreeMaxWhiteMap = FixedRootColorMaxWhiteMap(2)
+        subtreeMaxWhiteMap[BLACK, 0] = INVALID_MAX_WHITE
+        subtreeMaxWhiteMap[BLACK, 1] = 0
+        subtreeMaxWhiteMap[BLACK, 2] = 0
 
-        rootMaxWhiteMap[WHITE, 0] = 2
-        rootMaxWhiteMap[WHITE, 1] = INVALID_MAX_WHITE
-        rootMaxWhiteMap[WHITE, 2] = INVALID_MAX_WHITE
+        subtreeMaxWhiteMap[WHITE, 0] = 2
+        subtreeMaxWhiteMap[WHITE, 1] = INVALID_MAX_WHITE
+        subtreeMaxWhiteMap[WHITE, 2] = INVALID_MAX_WHITE
 
-        rootMaxWhiteMap[GRAY, 0] = 1
-        rootMaxWhiteMap[GRAY, 1] = 0
-        rootMaxWhiteMap[GRAY, 2] = INVALID_MAX_WHITE
+        subtreeMaxWhiteMap[GRAY, 0] = 1
+        subtreeMaxWhiteMap[GRAY, 1] = 0
+        subtreeMaxWhiteMap[GRAY, 2] = INVALID_MAX_WHITE
 
-        val minGrayToBlacksMap_1 = MinGrayToBlacksMap(rootMaxWhiteMap)
-        val minGrayToBlacksMap_2 = MinGrayToBlacksMap(rootMaxWhiteMap)
+        val minGrayToBlacksMap_1 = MinGrayToBlacksMap(subtreeMaxWhiteMap)
+        val minGrayToBlacksMap_2 = MinGrayToBlacksMap(subtreeMaxWhiteMap)
 
         // root -> (child, child)
         val united = minGrayToBlacksMap_1.unitedWith(minGrayToBlacksMap_2)
@@ -117,16 +117,16 @@ class MinGrayToBlacksMapTest {
         assertEquals(blackListOf(3), united[BLACK, 0])
         assertEquals(blackListOf(2), united[BLACK, 1])
         assertEquals(blackListOf(1), united[BLACK, 2])
-        assertEquals(blackListOf(), united[BLACK, 3])
+        assertEquals(blackListOf(),  united[BLACK, 3])
 
         assertEquals(blackListOf(0), united[WHITE, 0])
-        assertEquals(blackListOf(), united[WHITE, 1])
-        assertEquals(blackListOf(), united[WHITE, 2])
-        assertEquals(blackListOf(), united[WHITE, 3])
+        assertEquals(blackListOf(),  united[WHITE, 1])
+        assertEquals(blackListOf(),  united[WHITE, 2])
+        assertEquals(blackListOf(),  united[WHITE, 3])
 
-        assertEquals(blackListOf(), united[GRAY, 0])
+        assertEquals(blackListOf(),        united[GRAY, 0])
         assertEquals(blackListOf(0, 1, 2), united[GRAY, 1])
-        assertEquals(blackListOf(), united[GRAY, 2])
-        assertEquals(blackListOf(), united[GRAY, 3])
+        assertEquals(blackListOf(),        united[GRAY, 2])
+        assertEquals(blackListOf(),        united[GRAY, 3])
     }
 }

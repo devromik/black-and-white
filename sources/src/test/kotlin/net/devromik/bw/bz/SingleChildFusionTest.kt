@@ -12,35 +12,35 @@ import org.junit.Assert.*
 class SingleChildFusionTest {
     
     @Test fun doesNotHaveChildFusions() {
-        val rootMaxWhiteMap = FixedRootColorMaxWhiteMap.forSingleNode()
-        val fusion = SingleChildFusion(rootMaxWhiteMap)
+        val subtreeMaxWhiteMap = FixedRootColorMaxWhiteMap.forSingleNode()
+        val fusion = SingleChildFusion(subtreeMaxWhiteMap)
 
         assertNull(fusion.leftFusion)
         assertNull(fusion.rightFusion)
     }  
 
-    @Test fun minGrayCount() {
+    @Test fun providesMinGray() {
         // root -> child -> (child, child)
-        val rootMaxWhiteMap = FixedRootColorMaxWhiteMap(4)
-        rootMaxWhiteMap[BLACK, 0] = INVALID_MAX_WHITE
-        rootMaxWhiteMap[BLACK, 1] = 2
-        rootMaxWhiteMap[BLACK, 2] = 0
-        rootMaxWhiteMap[BLACK, 3] = 0
-        rootMaxWhiteMap[BLACK, 4] = 0
+        val subtreeMaxWhiteMap = FixedRootColorMaxWhiteMap(4)
+        subtreeMaxWhiteMap[BLACK, 0] = INVALID_MAX_WHITE
+        subtreeMaxWhiteMap[BLACK, 1] = 2
+        subtreeMaxWhiteMap[BLACK, 2] = 0
+        subtreeMaxWhiteMap[BLACK, 3] = 0
+        subtreeMaxWhiteMap[BLACK, 4] = 0
 
-        rootMaxWhiteMap[WHITE, 0] = 4
-        rootMaxWhiteMap[WHITE, 1] = 1
-        rootMaxWhiteMap[WHITE, 2] = 1
-        rootMaxWhiteMap[WHITE, 3] = INVALID_MAX_WHITE
-        rootMaxWhiteMap[WHITE, 4] = INVALID_MAX_WHITE
+        subtreeMaxWhiteMap[WHITE, 0] = 4
+        subtreeMaxWhiteMap[WHITE, 1] = 1
+        subtreeMaxWhiteMap[WHITE, 2] = 1
+        subtreeMaxWhiteMap[WHITE, 3] = INVALID_MAX_WHITE
+        subtreeMaxWhiteMap[WHITE, 4] = INVALID_MAX_WHITE
 
-        rootMaxWhiteMap[GRAY, 0] = 3
-        rootMaxWhiteMap[GRAY, 1] = 0
-        rootMaxWhiteMap[GRAY, 2] = 0
-        rootMaxWhiteMap[GRAY, 3] = 0
-        rootMaxWhiteMap[GRAY, 4] = INVALID_MAX_WHITE
+        subtreeMaxWhiteMap[GRAY, 0] = 3
+        subtreeMaxWhiteMap[GRAY, 1] = 0
+        subtreeMaxWhiteMap[GRAY, 2] = 0
+        subtreeMaxWhiteMap[GRAY, 3] = 0
+        subtreeMaxWhiteMap[GRAY, 4] = INVALID_MAX_WHITE
 
-        val fusion = SingleChildFusion(rootMaxWhiteMap)
+        val fusion = SingleChildFusion(subtreeMaxWhiteMap)
 
         assertEquals(fusion.minGrayFor(BLACK, 0), INVALID_MIN_GRAY)
         assertEquals(fusion.minGrayFor(BLACK, 1), 1)

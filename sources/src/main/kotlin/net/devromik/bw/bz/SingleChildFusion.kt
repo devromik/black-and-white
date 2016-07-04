@@ -7,14 +7,14 @@ import net.devromik.bw.INVALID_MAX_WHITE
 /**
  * @author Shulnyaev Roman
  */
-class SingleChildFusion(val rootMaxWhiteMap: FixedRootColorMaxWhiteMap) : Fusion(leftFusion = null, rightFusion = null) {
+class SingleChildFusion(val subtreeMaxWhiteMap: FixedRootColorMaxWhiteMap) : Fusion(leftFusion = null, rightFusion = null) {
 
-    val subtreeSize = rootMaxWhiteMap.treeSize
+    val subtreeSize = subtreeMaxWhiteMap.treeSize
 
     // ****************************** //
 
     override fun minGrayFor(rootColor: Color, black: Int): Int {
-        val maxWhite = rootMaxWhiteMap[rootColor, black]
+        val maxWhite = subtreeMaxWhiteMap[rootColor, black]
         return if (maxWhite != INVALID_MAX_WHITE) subtreeSize - (black + maxWhite) else INVALID_MIN_GRAY
     }
 }

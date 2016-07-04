@@ -18,8 +18,8 @@ class MinGrayToBlacksMap {
 
     // ****************************** //
 
-    constructor(rootMaxWhiteMap: FixedRootColorMaxWhiteMap) {
-        subtreeSize = rootMaxWhiteMap.treeSize
+    constructor(subtreeMaxWhiteMap: FixedRootColorMaxWhiteMap) {
+        subtreeSize = subtreeMaxWhiteMap.treeSize
         grayUpperEstimation = log2(subtreeSize) + 2
 
         map = arrayOf(
@@ -28,15 +28,15 @@ class MinGrayToBlacksMap {
             Array(grayUpperEstimation + 1, { IntArrayList() })
         )
 
-        for (black in (0..subtreeSize)) {
-            distribute(rootMaxWhiteMap, rootColor = BLACK, black = black)
-            distribute(rootMaxWhiteMap, rootColor = WHITE, black = black)
-            distribute(rootMaxWhiteMap, rootColor = GRAY, black = black)
+        for (black in 0..subtreeSize) {
+            distribute(subtreeMaxWhiteMap, rootColor = BLACK, black = black)
+            distribute(subtreeMaxWhiteMap, rootColor = WHITE, black = black)
+            distribute(subtreeMaxWhiteMap, rootColor = GRAY, black = black)
         }
     }
 
-    private fun distribute(rootMaxWhiteMap: FixedRootColorMaxWhiteMap, rootColor: Color, black: Int) {
-        val maxWhite = rootMaxWhiteMap[rootColor, black]
+    private fun distribute(subtreeMaxWhiteMap: FixedRootColorMaxWhiteMap, rootColor: Color, black: Int) {
+        val maxWhite = subtreeMaxWhiteMap[rootColor, black]
 
         if (maxWhite != INVALID_MAX_WHITE) {
             val minGray = subtreeSize - (black + maxWhite)
@@ -46,7 +46,7 @@ class MinGrayToBlacksMap {
              * Consider a tree whose root has many enough children each of which is a leaf.
              * Let the rootColor be black and a number of black nodes is equal to 1.
              * Then an optimal number of gray nodes is subtreeSize - 1 that is greater than lg(subtreeSize) + 2.
-             * But we do not have to take this case into account because such a coloring
+             * Fortunately we do not have to take this case into account because such a coloring
              * cannot be a part of an optimal one for a whole tree according to the lemma 2 from the paper.
              */
             if (minGray <= grayUpperEstimation) {
@@ -57,12 +57,13 @@ class MinGrayToBlacksMap {
 
     // ****************************** //
 
-    operator fun get(rootColor: Color, minGray: Int) = if (minGray <= grayUpperEstimation) map[rootColor.index][minGray] else NO_BLACKS
+    operator fun get(rootColor: Color, minGray: Int) =
+        if (minGray <= grayUpperEstimation) map[rootColor.index][minGray] else NO_BLACKS
 
     fun toFixedRootColorMaxWhiteMap(): FixedRootColorMaxWhiteMap {
         val maxWhiteMap = FixedRootColorMaxWhiteMap(subtreeSize)
 
-        for (black in (0..subtreeSize)) {
+        for (black in 0..subtreeSize) {
             maxWhiteMap[BLACK, black] = INVALID_MAX_WHITE
             maxWhiteMap[WHITE, black] = INVALID_MAX_WHITE
             maxWhiteMap[GRAY, black] = INVALID_MAX_WHITE
@@ -138,7 +139,7 @@ class MinGrayToBlacksMap {
         val blackToMinGray = IntArray(subtreeSize + 2, { INVALID_MIN_GRAY })
 
         for (gray in grayUpperEstimation downTo 0) {
-            for (gray1 in (0..gray)) {
+            for (gray1 in 0..gray) {
                 val blacks1 = unionOp1[rootColor, gray1]
 
                 val gray2 = gray - gray1
