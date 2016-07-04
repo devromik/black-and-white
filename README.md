@@ -71,8 +71,6 @@ val tree = Tree<String>(
 tree.index()
 
 val colorer = BerendZuckerColorer()
-
-// See the Result interface for more details.
 val result = colorer.resultFor(tree)
 
 /* ***** MaxWhiteMap ***** */
