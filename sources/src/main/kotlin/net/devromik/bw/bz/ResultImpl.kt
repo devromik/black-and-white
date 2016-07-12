@@ -36,7 +36,7 @@ class ResultImpl<D>(val tree: Tree<D>, private val forkJoinPool: ForkJoinPool = 
 
         if (result.subtreeSize() == 2) {
             val childResult = resultFor(subtreeRoot.childAt(0))
-            val subtreeMaxWhiteMap = pairMaxWhiteMapForChildResult(childResult)
+            val subtreeMaxWhiteMap = parentResultForSingleChildResult(childResult)
             (result as InnerTreeNodeResult<D>).subtreeMaxWhiteMap = subtreeMaxWhiteMap
 
             val fusion = SingleChildFusion(subtreeMaxWhiteMap)
@@ -61,14 +61,14 @@ class ResultImpl<D>(val tree: Tree<D>, private val forkJoinPool: ForkJoinPool = 
                 childTasks.add(childTask)
             }
 
-            // We make the results for children visible for the current thread (happens-before).
+            // We make the results for the children visible for the current thread (happens-before).
             for (childResult in forkJoinPool.invokeAll(childTasks)) {
                 childResult.get()
             }
 
             val merging = Array<Pair<MinGrayToBlacksMap, Fusion>>(separator.childCount, {
                 val childResult = resultFor(separator.childAt(it))
-                val childMaxWhiteMap = pairMaxWhiteMapForChildResult(childResult)
+                val childMaxWhiteMap = parentResultForSingleChildResult(childResult)
                 MinGrayToBlacksMap(childMaxWhiteMap) to SingleChildFusion(childMaxWhiteMap)
             })
 
@@ -421,7 +421,7 @@ internal fun <D> separatorFor(subtreeRoot: TreeNode<D>, treeResult: TreeInfo<D, 
     throw AssertionError()
 }
 
-internal fun <D> pairMaxWhiteMapForChildResult(childResult: TreeNodeResult<D>): FixedRootColorMaxWhiteMap {
+internal fun <D> parentResultForSingleChildResult(childResult: TreeNodeResult<D>): FixedRootColorMaxWhiteMap {
     val childMaxWhiteMap = childResult.subtreeMaxWhiteMap()
     val subtreeSize = childResult.initSubtreeSize() + 1
     val maxWhiteMap = FixedRootColorMaxWhiteMap(subtreeSize)
