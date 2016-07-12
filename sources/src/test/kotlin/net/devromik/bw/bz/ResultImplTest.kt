@@ -119,7 +119,7 @@ class ResultImplTest {
         expectedPairMaxWhiteMap[GRAY, 2] = 0
         expectedPairMaxWhiteMap[GRAY, 3] = INVALID_MAX_WHITE
 
-        val pairMaxWhiteMap = pairMaxWhiteMapForChildResult(childResult)
+        val pairMaxWhiteMap = parentResultForSingleChildResult(childResult)
         assert_FixedRootColorMaxWhiteMap_Equals(expectedPairMaxWhiteMap, pairMaxWhiteMap)
     }
 }
