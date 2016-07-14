@@ -48,8 +48,7 @@ interface Result<D> {
 ```result.coloringFor(b, w)``` complexity: ```O(n^2)```
 * **X** (I am writing an article)</br>
 ```result = resultFor(tree)``` complexity: ```O(n^3 * maxChainLength)```,</br>
-```maxChainLenth``` is a length of a maximal path in the tree such that either its node is the first one</br>
-or the node has at most one child</br>
+```maxChainLenth``` is a length of a maximal path in the tree such that each its node has only child</br>
 ```result.coloringFor(b, w)``` complexity: ```O(n)```
 
 ## How to use
