@@ -46,10 +46,7 @@ interface Result<D> {
 * **BerendZucker** (http://jgaa.info/accepted/2009/BerendZucker2009.13.2.pdf)</br>
 ```result = resultFor(tree)``` complexity: ```O(n^2*lg(n)^3)```</br>
 ```result.coloringFor(b, w)``` complexity: ```O(n^2)```
-* **X** (I am writing an article)</br>
-```result = resultFor(tree)``` complexity: ```O(n^3 * maxChainLength)```,</br>
-```maxChainLenth``` is a length of a maximal path in the tree such that each its node has only child</br>
-```result.coloringFor(b, w)``` complexity: ```O(n)```
+* **X**
 
 ## How to use
 
